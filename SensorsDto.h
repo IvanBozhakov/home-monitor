@@ -9,6 +9,7 @@ class SensorsDto {
     float temperature;
     float humidity;
     bool isGasDetected;
+    int gasLevel;
     bool isMotionDetected;
 
   public:
@@ -16,6 +17,7 @@ class SensorsDto {
       temperature = 0.0;
       humidity = 0.0;
       isGasDetected = false;
+      gasLevel = 0;
       isMotionDetected = false;
     }
 
@@ -31,6 +33,10 @@ class SensorsDto {
       isGasDetected = gasDetected;
     }
 
+    void setGasLevel(int level) {
+      gasLevel = level;
+    }
+
     void setIsMotionDetected(bool motionDetected) {
       isMotionDetected = motionDetected;
     }
@@ -40,6 +46,7 @@ class SensorsDto {
       doc["temperature"] = temperature;
       doc["humidity"] = humidity;
       doc["isGasDetected"] = isGasDetected;
+      doc["gasLevel"] = gasLevel;
       doc["isMotionDetected"] = isMotionDetected;
       
       String jsonString;

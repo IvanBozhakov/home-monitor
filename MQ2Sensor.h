@@ -5,21 +5,27 @@
 
 class MQ2Sensor {
   
-  private:
-    uint8_t sensorPin;
+  uint8_t digitalPin;
+    uint8_t analogPin;
     
   public:
-    MQ2Sensor(uint8_t pin) : sensorPin(pin) {}
+    MQ2Sensor(uint8_t dpin, uint8_t apin)
+        : digitalPin(dpin), analogPin(apin) {}
     
     void begin() {
-        pinMode(sensorPin, INPUT);
+        pinMode(digitalPin, INPUT);
+        pinMode(analogPin, INPUT);
         Serial.print("Wait for the MQ2 to warm up");
         delay(20000);
     }
     
     bool isGasDetected() {
-       int gasState = digitalRead(sensorPin);
+       int gasState = digitalRead(digitalPin);
        return gasState == LOW;
+    }
+
+    int level() {
+       return analogRead(analogPin);
     }
 };
 

@@ -4,7 +4,8 @@
 // Define here you're sensors pins
 #define DHT_TYPE DHT11
 #define DHT_SENSOR_PIN 27 
-#define MQ2_SENSOR_PIN 25 
+#define MQ2_SENSOR_DOUT_PIN 25
+#define MQ2_SENSOR_AOUT_PIN 33  
 #define PIR_PIN 26
 
 // Wi-Fi Credentials

@@ -8,7 +8,7 @@
 #include <SensorsDto.h>
 
 DHTSensor dhtSensor(DHT_SENSOR_PIN, DHT_TYPE);
-MQ2Sensor mq2Sensor(MQ2_SENSOR_PIN);
+MQ2Sensor mq2Sensor(MQ2_SENSOR_DOUT_PIN, MQ2_SENSOR_AOUT_PIN);
 PIRSensor pirSensor(PIR_PIN);
 
 WiFiConnection wifi(WIFI_SSID, WIFI_PASSWORD);
@@ -38,8 +38,9 @@ void loop() {
         sensors.setTemperature(temperature);
         sensors.setHumidity(humidity);
     } 
-  
+
     // MQ-2
+    sensors.setGasLevel(mq2Sensor.level());
     if (mq2Sensor.isGasDetected()) {
       Serial.println("Gas detected!");
       sensors.setIsGasDetected(true);
